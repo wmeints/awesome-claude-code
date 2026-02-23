@@ -68,6 +68,13 @@ Most of these agents and skills were written with specific project conventions i
 - **Remove or modify sections** that don't apply. The architecture reviewer references specific quality goals that won't match your project.
 - **Adjust tooling references.** The storybook testing skill targets `@storybook/nextjs-vite` — swap this for your framework's Storybook adapter.
 
+## :warning: But I don't have Claude Code?!
+
+The skills and agents in this repository work with GitHub Copilot, but you have to modify the files a little bit.
+Agents shared here can be installed in `.github/agents` and the skills go into `.github/skills`. 
+
+Agents can have different tools in Github Copilot, so you may need to fix them.
+
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
