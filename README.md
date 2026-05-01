@@ -60,8 +60,9 @@ whatever makes you feel happy :-)
 
 ## Background information
 
-I frequently work with teams on all sorts of software and people ask me, what do you do to stay productive with AI?
-Well, there are many angles you can take here. But my workflow generally looks as described below.
+I frequently work with teams on all sorts of software and people ask me, what do
+you do to stay productive with AI? Well, there are many angles you can take
+here. But my workflow generally looks as described below.
 
 ### Workflow steps
 
