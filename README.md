@@ -12,15 +12,9 @@ Code](https://docs.anthropic.com/en/docs/claude-code).
 
 ### Agents
 
-Agents are custom personas you can invoke in Claude Code to perform specialized
-tasks. Copy an agent file into your project's `.claude/agents/` directory to use
-it.
+Currently, I don't have agents in here. I don't use agents all that much.
 
 ### Skills
-
-Skills are reusable prompt templates that Claude Code can invoke via slash
-commands. Copy a skill folder into your project's `.claude/skills/` directory to
-use it.
 
 #### [Grill-me](.claude/skills/grill-me/SKILL.md)
 
@@ -45,3 +39,14 @@ documentation.
 The output of the skill is stored in
 `docs/product/<number>-<description-title>.md`. You can create multiple PRDs in
 case you're working in multiple phases.
+
+## Installation
+
+Use the following command to install the skills:
+
+```bash
+npx skills install wmeints/awesome-claude-code
+```
+
+The tool will ask you where you want to put the contents of this repo. Choose
+whatever makes you feel happy :-)
