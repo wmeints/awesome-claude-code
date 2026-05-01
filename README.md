@@ -1,6 +1,7 @@
 # Awesome Claude Code
 
-A collection of reusable agents and skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code).
+A collection of reusable agents and skills for [Claude
+Code](https://docs.anthropic.com/en/docs/claude-code).
 
 > **Important:** Everything in this repository is optional. You should review
 > the contents of any agent or skill before adding it to your project. These are
@@ -15,66 +16,32 @@ Agents are custom personas you can invoke in Claude Code to perform specialized
 tasks. Copy an agent file into your project's `.claude/agents/` directory to use
 it.
 
-| Agent                     | File                              | Description                                                                                                                                                                                                     |
-| ------------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Architecture Reviewer** | `agents/architecture-reviewer.md` | Reviews architecture documentation (arc42 format) for completeness, ADR quality, quality goal coverage, and alignment with product goals. Produces a structured review report with prioritized recommendations. |
-
 ### Skills
 
-Skills are reusable prompt templates that Claude Code can invoke via slash commands. Copy a skill folder into your project's `.claude/skills/` directory to use it.
+Skills are reusable prompt templates that Claude Code can invoke via slash
+commands. Copy a skill folder into your project's `.claude/skills/` directory to
+use it.
 
-| Skill                 | Folder                      | Description                                                                                                                                                                                                                                               |
-| --------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Storybook Testing** | `skills/storybook-testing/` | Creates or modifies Storybook component stories and tests. Includes a template for `@storybook/nextjs-vite` stories.                                                                                                                                      |
-| **Record ADR**        | `skills/record-adr/`        | Guides you through writing Architecture Decision Records with proper context, alternatives, pros/cons, and consequences. Includes an ADR template.                                                                                                        |
-| **Feature Spec**      | `skills/spec/`              | Interactive feature specification writer. Walks you through problem discovery, user stories, functional requirements, acceptance scenarios (Given/When/Then), domain modeling, and non-functional requirements. Produces a complete spec from a template. |
-| **Test Review**       | `skills/test-review/`       | Reviews test code for coverage adequacy, redundancy, AAA pattern compliance, assertion quality, single responsibility, and fixture usage. Includes a self-critique step to filter out noise.                                                              |
+#### [Grill-me](.claude/skills/grill-me/SKILL.md)
 
-## How to use
+This is a skill I adopted from Matt Pocock. It is a universal skill that can be
+helpful when you're exploring a topic in your code base or putting together a
+plan. When you use this skill, Claude Code will interview you and help you
+create shared understanding between you and the agent. This is of course not a
+stand-in for real human understanding as Claude Code is only a machine. But it
+can be helpful still. I use this to explore new ideas before presenting them to
+anybody. It also helps me refine a backlog and work on prototypes.
 
-### Prerequisites
+#### [Create-PRD](.claude/skills/create-prd/SKILL.md)
 
-You need [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and configured.
+This is another skill I picked up from Matt Pocock. When designing an initial
+version of a new project I like to use this skill to put together a breakdown of
+what I'm trying to solve. The workflow here is simple: I ask Claude to grill me
+first on the topic to create the shared understanding between me and the AI.
+Then I use the `/create-prd` skill to turn the transcript of the conversation
+into a PRD. Then, I use the PRD to build other things like proper architecture
+documentation.
 
-### Installing an agent
-
-1. Copy the agent's `.md` file into your project's `.claude/agents/` directory:
-   ```
-   .claude/
-     agents/
-       architecture-reviewer.md
-   ```
-2. Open Claude Code in your project and invoke the agent by name — e.g., ask Claude to run the architecture reviewer.
-
-### Installing a skill
-
-1. Copy the skill's entire folder into your project's `.claude/skills/` directory:
-   ```
-   .claude/
-     skills/
-       record-adr/
-         SKILL.md
-         templates/
-           adr.md
-   ```
-2. In Claude Code, invoke the skill with its name — e.g., `/record-adr`.
-
-### Adapting to your project
-
-Most of these agents and skills were written with specific project conventions in mind (arc42 documentation, Next.js + Storybook, pytest, etc.). Before using them:
-
-- **Read the full source.** Understand what the agent or skill does and what assumptions it makes.
-- **Edit paths and conventions** to match your project structure. For example, the ADR skill stores files in `docs/architecture/adr/` — change this if your project uses a different location.
-- **Remove or modify sections** that don't apply. The architecture reviewer references specific quality goals that won't match your project.
-- **Adjust tooling references.** The storybook testing skill targets `@storybook/nextjs-vite` — swap this for your framework's Storybook adapter.
-
-## :warning: But I don't have Claude Code?!
-
-The skills and agents in this repository work with GitHub Copilot, but you have to modify the files a little bit.
-Agents shared here can be installed in `.github/agents` and the skills go into `.github/skills`. 
-
-Agents can have different tools in Github Copilot, so you may need to fix them.
-
-## License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+The output of the skill is stored in
+`docs/product/<number>-<description-title>.md`. You can create multiple PRDs in
+case you're working in multiple phases.
